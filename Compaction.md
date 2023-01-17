@@ -1,0 +1,9 @@
+## Compaction
+- compaction_style
+默认Leveld Compaction
+- target_file_size_base
+L1层单个sstable文件的大小阈值，默认值为64MB；逐上各级，阈值会乘以因子target_file_size_multiplier(默认为1)。增大该值可以降低Compaction的频率，减少写放大，但是也会造成空间放大和读放大（旧数据不能及时清理）
+- max_bytes_for_level_base
+L1层(base)的数据总大小阈值，默认值为256MB;逐上各级，层大小会乘以因子max_bytes_for_level_multiplier(默认值10)
+- level_compaction_dynamic_level_bytes
+该参数打开后，保持LSM树的正三角形形态，逐层的阈值大小会动态调整，可以减少写放大
